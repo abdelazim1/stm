@@ -8,7 +8,7 @@
 #ifndef INC_STM32F401XX_H_
 #define INC_STM32F401XX_H_
 
-#include<stddef.h>
+#include <stddef.h>
 #include <stdint.h>
 
 #define __vo volatile
@@ -24,7 +24,7 @@
 //ARM Cortex Mx Processor NVIC ICERx register Addresses
 #define NVIC_ICER0 			((__vo uint32_t*)0XE000E180)
 #define NVIC_ICER1			((__vo uint32_t*)0XE000E184)
-#define NVIC_ICER2  		((__vo uint32_t*)0XE000E188)
+#define NVIC_ICER2  			((__vo uint32_t*)0XE000E188)
 #define NVIC_ICER3			((__vo uint32_t*)0XE000E18C)
 
 //ARM Cortex Mx Processor Priority Register Address Calculation
@@ -34,9 +34,9 @@
 #define NO_PR_BITS_IMPLEMENTED  4
 
 //base addresses of Flash and SRAM memories
-#define FLASH_BASEADDR						0x08000000U
-#define SRAM_BASEADDR						0x20000000U
-#define ROM_BASEADDR						0x1FFF0000U
+#define FLASH_BASEADDR						    0x08000000U
+#define SRAM_BASEADDR						    0x20000000U
+#define ROM_BASEADDR						    0x1FFF0000U
 
 //AHBx and APBx Bus Peripheral base addresses
 #define PERIPH_BASEADDR 						0x40000000U
@@ -74,15 +74,15 @@
 //GPIO_Reg
 typedef struct
 {
-	__vo uint32_t MODER;                      //Address offset: 0x00
-	__vo uint32_t OTYPER;                     //Address offset: 0x04
+	__vo uint32_t MODER;                  
+	__vo uint32_t OTYPER;                  
 	__vo uint32_t OSPEEDR;
 	__vo uint32_t PUPDR;
 	__vo uint32_t IDR;
 	__vo uint32_t ODR;
 	__vo uint32_t BSRR;
 	__vo uint32_t LCKR;
-	__vo uint32_t AFR[2];					 //AFR[0] : L, AF[1] : H register, offset: 0x20-0x24 */
+	__vo uint32_t AFR[2];					 
 }GPIO_RegDef_t;
 
 //RCC_Reg
@@ -198,13 +198,7 @@ typedef struct
 #define GPIOE_REG_RESET()               do{ (RCC->AHB1RSTR |= (1 << 4)); (RCC->AHB1RSTR &= ~(1 << 4)); }while(0)
 #define GPIOH_REG_RESET()               do{ (RCC->AHB1RSTR |= (1 << 7)); (RCC->AHB1RSTR &= ~(1 << 7)); }while(0)
 
-//macro to return a code( between 0 to 7) for a given GPIO base address(x)
-#define GPIO_BASEADDR_TO_CODE(x)      ( (x == GPIOA)?0:\
-										(x == GPIOB)?1:\
-										(x == GPIOC)?2:\
-										(x == GPIOD)?3:\
-								        (x == GPIOE)?4:\
-								        (x == GPIOH)?7:0)
+
 
 
 //some generic macros

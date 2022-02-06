@@ -91,6 +91,14 @@ typedef struct
 #define GPIO_PIN_PU			1
 #define GPIO_PIN_PD			2
 
+//macro to return a code( between 0 to 7) for a given GPIO base address(x)
+#define GPIO_BASEADDR_TO_CODE(x)      ( (x == GPIOA)?0:\
+										(x == GPIOB)?1:\
+										(x == GPIOC)?2:\
+										(x == GPIOD)?3:\
+								        (x == GPIOE)?4:\
+								        (x == GPIOH)?7:0)
+
 /*
  * Peripheral Clock setup
  */
